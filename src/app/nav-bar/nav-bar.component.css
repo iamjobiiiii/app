@@ -3,3 +3,9 @@
 .dropdown-menu {
     z-index: 1050; 
 }
+
+.navbar{
+    position: fixed;
+    width: 100%;
+
+}
