@@ -15,23 +15,23 @@
   
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4">
-              <input type="email" id="form3Example3" class="form-control form-control-lg"
+              <input type="text" id="form3Example3" class="form-control form-control-lg"
                 placeholder="Enter your ID" />
-              <label class="form-label" for="form3Example3">Your ID</label>
+              <label [(ngModel)]="login.userid" name="userid" class="form-label" >Your ID</label>
             </div>
   
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-3">
               <input type="password" id="form3Example4" class="form-control form-control-lg"
                 placeholder="Enter password" />
-              <label class="form-label" for="form3Example4">Password</label>
+              <label [(ngModel)]="login.password" name="password" class="form-label" >Password</label>
             </div>
   
            
   
             <div class="text-center text-lg-start mt-4 pt-2">
               <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
-                style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                style="padding-left: 2.5rem; padding-right: 2.5rem;" (click)="onlogin()">Login</button>
             </div>
   
           </form>
