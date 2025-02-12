@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 import {AboutcollegeComponent} from './aboutcollege/aboutcollege.component'
 import { SectionHeroComponent } from './section-hero/section-hero.component';
-import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { HodComponent } from './hod/hod/hod.component';
 import { ParentComponent } from './parents/parent/parent.component';
 import { StudentComponent } from './students/student/student.component';
+import { LoginComponent } from './publicauth/login/login.component';
 
 
 
@@ -31,7 +31,7 @@ export const routes: Routes = [
     },
     
     {
-        path: 'admin',  component: AdminComponent
+        path: 'admin', component:AdminComponent
     },
 
     {
@@ -45,4 +45,8 @@ export const routes: Routes = [
     {
         path: 'student', component:StudentComponent
     },
+
+    {
+        path: 'teacher', component:StudentComponent
+    }
 ];
