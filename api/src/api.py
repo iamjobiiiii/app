@@ -1,16 +1,8 @@
 from fastapi import Depends, FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
-from src.auth.auth_bearer import JWTBearer
 from src.auth.auth_handler import sign_jwt
-from src.model import PostSchema, UserSchema, UserLoginSchema
-
-posts = [
-    {
-        "id": 1,
-        "title": "Pancake",
-        "content": "Lorem Ipsum ..."
-    }
-]
+from src.model import UserSchema, UserLoginSchema
+from src.routes import post
 
 users = []
 
@@ -28,6 +20,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(post.router)
 
 def check_user(data: UserLoginSchema):
     for user in users:
@@ -59,30 +53,4 @@ async def user_login(user: UserLoginSchema = Body(...)):
         return sign_jwt(u.email, u.fullname)
     return {
         "error": "Wrong login details!"
-    }
-
-# Auth API
-
-@app.get("/posts", dependencies=[Depends(JWTBearer())], tags=["posts"])
-async def get_posts() -> dict:
-    return { "data": posts }
-
-@app.get("/posts/{id}", dependencies=[Depends(JWTBearer())], tags=["posts"])
-async def get_single_post(id: int) -> dict:
-    if id > len(posts):
-        return {
-            "error": "No such post with the supplied ID."
-        }
-    for post in posts:
-        if post["id"] == id:
-            return {
-                "data": post
-            }
-        
-@app.post("/posts", dependencies=[Depends(JWTBearer())], tags=["posts"])
-async def add_post(post: PostSchema) -> dict:
-    post.id = len(posts) + 1
-    posts.append(post.dict())
-    return {
-        "data": "post added."
     }
