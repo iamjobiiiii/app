@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../service/auth.service';
 
 
 
@@ -15,12 +16,20 @@ export class LoginComponent {
     userid: '',
     password: ''
   };
-
- 
-
-  constructor( private router: Router) {
+  constructor( private router: Router, private authService: AuthService) {
 
 
+  }
+
+  public signin() {
+    this.authService.signin(this.login.userid, this.login.password).subscribe(token=>{
+      if('access_token' in token) {
+        this.authService.saveToken(token['access_token'] as string);
+        this.router.navigateByUrl('admin');
+      }else {
+        alert("Wrong Credentials! Please try again...");
+      }
+    })
   }
 
   onLogin() {
