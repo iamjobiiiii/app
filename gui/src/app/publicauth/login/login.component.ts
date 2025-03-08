@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
 import { AuthService } from '../../service/auth.service';
 
 
@@ -20,39 +21,62 @@ export class LoginComponent {
 
 
   }
-
+  
   public signin() {
-    this.authService.signin(this.login.userid, this.login.password).subscribe(token=>{
-      if('access_token' in token) {
-        this.authService.saveToken(token['access_token'] as string);
-        this.router.navigateByUrl('admin');
-      }else {
-        alert("Wrong Credentials! Please try again...");
+    this.authService.signin(this.login.userid, this.login.password).subscribe(
+      (response: any) => {
+        console.log('API Response:', response);
+
+        if (response && response.access_token) {
+          // Save the token
+          this.authService.saveToken(response.access_token);
+
+          // Decode the JWT token to extract the role
+          try {
+            const decodedToken: any = jwtDecode(response.access_token); // Decode the token
+            const role = decodedToken.role ? decodedToken.role.toLowerCase() : null; // Extract role
+            console.log('User role:', role);
+
+            if (role) {
+              // Navigate based on role
+              switch (role) {
+                case 'admin':
+                  this.router.navigateByUrl('admin');
+                  break;
+                case 'hod':
+                  this.router.navigateByUrl('hod');
+                  break;
+                case 'parents':
+                  this.router.navigateByUrl('parents');
+                  break;
+                case 'students':
+                  this.router.navigateByUrl('students');
+                  break;
+                case 'teacher':
+                  this.router.navigateByUrl('teacher');
+                  break;
+                default:
+                  alert(`Unknown role: ${role}. Please contact support.`);
+                  break;
+              }
+            } else {
+              alert("Role is undefined or null. Please contact support.");
+            }
+          } catch (error) {
+            console.error("Error decoding token:", error);
+            alert("An error occurred while decoding the token. Please contact support.");
+          }
+        } else {
+          alert("Wrong credentials! Please try again...");
+        }
+      },
+      error => {
+        console.error('Login error:', error);
+        alert("An error occurred while trying to log in. Please try again.");
       }
-    })
-  }
-
-  onLogin() {
-
-   
-       if (this.login.userid === 'admin' && this.login.password === 'admin') {
-        this.router.navigateByUrl('admin');
-      }
-
-    else if (this.login.userid === 'hod' && this.login.password === 'hod') {
-      this.router.navigateByUrl('hod');
-    }
-
-    else if (this.login.userid === 'parent' && this.login.password === 'parent') {
-      this.router.navigateByUrl('parent');
-    }
-
-    else if (this.login.userid === 'student' && this.login.password === 'student') {  
-      this.router.navigateByUrl('student');
-    }
-
-    else if (this.login.userid === 'teacher' && this.login.password === 'teacher') {
-      this.router.navigateByUrl('teacher');
-    }
+    );
   }
 }
+
+ 
+

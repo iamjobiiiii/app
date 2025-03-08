@@ -43,7 +43,7 @@ export const routes: Routes = [
     },
 
     {
-        path: 'student', component:StudentComponent
+        path: 'students', component:StudentComponent
     },
 
     {
