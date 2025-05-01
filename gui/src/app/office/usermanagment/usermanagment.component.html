@@ -1,0 +1,29 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Delete User</h2>
+  
+    <form>
+      <!-- User ID -->
+      <div class="mb-3">
+        <label for="userId" class="form-label">User ID</label>
+        <input type="text" class="form-control" id="userId" placeholder="Enter User ID" required>
+      </div>
+  
+      <!-- User Role -->
+      <div class="mb-3">
+        <label for="userRole" class="form-label">User Role</label>
+        <select class="form-select" id="userRole" required>
+          <option selected disabled value="">Select Role</option>
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+          <option value="hod">HOD</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+  
+      <!-- Submit Button -->
+      <div class="text-end">
+        <button type="submit" class="btn btn-danger">Delete User</button>
+      </div>
+    </form>
+  </div>
+  

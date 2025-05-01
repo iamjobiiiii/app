@@ -1,0 +1,40 @@
+<div class="container mt-5">
+    <h2 class="mb-4">Add New Event</h2>
+  
+    <form class="row g-3" enctype="multipart/form-data">
+      <!-- Event Title -->
+      <div class="col-md-6">
+        <label for="eventTitle" class="form-label">Event Title</label>
+        <input type="text" class="form-control" id="eventTitle" placeholder="e.g. Science Exhibition" required>
+      </div>
+  
+      <!-- Event Image Upload -->
+      <div class="col-md-6">
+        <label for="eventImage" class="form-label">Upload Event Image</label>
+        <input class="form-control" type="file" id="eventImage" accept="image/*" required>
+      </div>
+  
+      <!-- Event Description -->
+      <div class="col-12">
+        <label for="eventDescription" class="form-label">Description</label>
+        <textarea class="form-control" id="eventDescription" rows="4" placeholder="Describe the event..." required></textarea>
+      </div>
+  
+      <!-- Event Duration -->
+      <div class="col-md-6">
+        <label for="startDate" class="form-label">Start Date</label>
+        <input type="date" class="form-control" id="startDate" required>
+      </div>
+  
+      <div class="col-md-6">
+        <label for="endDate" class="form-label">End Date</label>
+        <input type="date" class="form-control" id="endDate" required>
+      </div>
+  
+      <!-- Submit Button -->
+      <div class="col-12 text-end">
+        <button type="submit" class="btn btn-success mt-2">Submit Event</button>
+      </div>
+    </form>
+  </div>
+  

@@ -1,0 +1,50 @@
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Promote Lecturer</h2>
+  
+    <form>
+      <!-- Lecturer ID -->
+      <div class="mb-3">
+        <label for="lecturerId" class="form-label">Lecturer ID</label>
+        <input type="text" class="form-control" id="lecturerId" placeholder="Enter Lecturer ID" required>
+      </div>
+  
+      <!-- Promotion Role -->
+      <div class="mb-3">
+        <label for="promotionRole" class="form-label">Promotion Role</label>
+        <select class="form-select" id="promotionRole" required>
+          <option selected disabled value="">Select Role</option>
+          <option value="hod">HOD</option>
+          <option value="class_incharge">Class In-Charge</option>
+        </select>
+      </div>
+  
+      <!-- Department (Required for HOD) -->
+      <div class="mb-3">
+        <label for="department" class="form-label">Department (required for HOD)</label>
+        <select class="form-select" id="department">
+          <option selected disabled value="">Select Department</option>
+          <option>Computer Science</option>
+          <option>Electronics</option>
+          <option>Mathematics</option>
+          <option>Physics</option>
+        </select>
+      </div>
+  
+      <!-- Class (Only for Class In-Charge) -->
+      <div class="mb-3">
+        <label for="classAssign" class="form-label">Class / Semester (only for Class In-Charge)</label>
+        <select class="form-select" id="classAssign">
+          <option selected disabled value="">Select Class</option>
+          <option>BSc CS - Semester 1</option>
+          <option>BSc CS - Semester 3</option>
+          <option>BSc Electronics - Semester 5</option>
+        </select>
+      </div>
+  
+      <!-- Submit Button -->
+      <div class="text-end">
+        <button type="submit" class="btn btn-primary">Promote</button>
+      </div>
+    </form>
+  </div>
+  

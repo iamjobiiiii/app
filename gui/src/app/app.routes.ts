@@ -14,6 +14,14 @@ import { CemarkmanagementComponent } from './office/cemarkmanagement/cemarkmanag
 import { InernalmarkmanagemantComponent } from './office/inernalmarkmanagemant/inernalmarkmanagemant.component';
 import { AttendancemanagementComponent } from './office/attendancemanagement/attendancemanagement.component';
 import { TeacherComponent } from './teachers/teacher/teacher.component';
+import { ClassinchargeComponent } from './classincharge/classincharge.component';
+import { RemovestudentComponent } from './office/removestudent/removestudent.component';
+import { PLPromotionComponent } from './office/p-l-promotion/p-l-promotion.component';
+import { EventcreationComponent } from './office/eventcreation/eventcreation.component';
+import { RegistrationComponent } from './publicauth/registration/registration.component';
+import { ParentcreationComponent } from './office/parentcreation/parentcreation.component';
+import { UsermanagmentComponent } from './office/usermanagment/usermanagment.component';
+import { PromotionComponent } from './office/promotion/promotion.component';
 
 
 
@@ -41,11 +49,49 @@ export const routes: Routes = [
     },
     
     {
-        path: 'admin', component:AdminComponent
+        path: 'admin', component:AdminComponent,
+
+        children: [
+            { path: '', redirectTo: 'eventmanagement', pathMatch: 'full',},
+            { path: 'eventmanagement', component: EventcreationComponent, },
+            { path: 'registration', component: RegistrationComponent, },
+            { path: 'parentsmanagement', component: ParentcreationComponent, },
+            { path: 'usermanagement', component: UsermanagmentComponent },
+            {path: 'profile', component:ProfileComponent},
+            {path: 'promotion', component:PromotionComponent},
+           
+        ]
     },
 
     {
         path: 'hod', component:HodComponent,
+
+        children: [
+            {
+                path: '', redirectTo: 'profile', pathMatch: 'full',
+            },
+            {
+                path: 'profile', component:ProfileComponent
+            },
+            {
+                path: 'ce_management', component:CemarkmanagementComponent
+            },
+            {
+                path: 'internal_mark_management', component:InernalmarkmanagemantComponent
+            },
+            {
+                path: 'attendence_management', component:AttendancemanagementComponent
+            },
+            {
+                path: 'remove_student', component:RemovestudentComponent
+            },
+            {
+                path: 'p&L_management', component:PLPromotionComponent
+            },
+
+
+        ]
+
 
     },
     
@@ -78,6 +124,33 @@ export const routes: Routes = [
 
     {
         path: 'teacher', component:TeacherComponent,
+
+        children: [
+            {
+                path: '', redirectTo: 'profile', pathMatch: 'full',
+            },
+
+            {
+                path: 'profile', component:ProfileComponent
+            },
+
+            {
+                path: 'ce_management', component:CemarkmanagementComponent
+            },
+
+            {
+                path: 'internal_mark_management', component:InernalmarkmanagemantComponent
+            },
+
+            {
+                path: 'attendance_management', component:AttendancemanagementComponent
+            },
+
+             
+        ]
+    },
+
+    { path: 'classincharge', component: ClassinchargeComponent, 
 
         children: [
             {

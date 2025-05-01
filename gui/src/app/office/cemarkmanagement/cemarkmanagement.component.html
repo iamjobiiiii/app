@@ -1,1 +1,85 @@
-<p>cemarkmanagement works!</p>
+<div class="container mt-5">
+    <h2 class="mb-4">CE Mark Entry </h2>
+  
+    <form class="row g-3">
+      <!-- Student ID -->
+      <div class="col-md-4">
+        <label for="studentId" class="form-label">Student ID</label>
+        <input type="text" class="form-control" id="studentId" placeholder="e.g. STU001" required>
+      </div>
+  
+      <!-- Subject Selection -->
+      <div class="col-md-4">
+        <label for="subject" class="form-label">Subject</label>
+        <select class="form-select" id="subject" required>
+          <option selected disabled value="">Select Subject</option>
+          <option>c++</option>
+          <option>Java</option>
+          <option>Python</option>
+          <option>C-programing</option>
+          <option>IoT</option>
+        </select>
+      </div>
+  
+      <!-- Semester -->
+      <div class="col-md-4">
+        <label for="semester" class="form-label">Semester</label>
+        <select class="form-select" id="semester">
+          <option selected disabled value="">Select Semester</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+        </select>
+      </div>
+  
+      <!-- Mark Components -->
+      <div class="col-md-3">
+        <label for="assignment" class="form-label">Assignment (5)</label>
+        <input type="number" class="form-control" id="assignment" min="0" max="5" oninput="calculateTotal()" required>
+      </div>
+  
+      <div class="col-md-3">
+        <label for="seminar" class="form-label">Seminar (5)</label>
+        <input type="number" class="form-control" id="seminar" min="0" max="5" oninput="calculateTotal()" required>
+      </div>
+  
+      <div class="col-md-3">
+        <label for="attendance" class="form-label">Attendance (5)</label>
+        <input type="number" class="form-control" id="attendance" min="0" max="5" oninput="calculateTotal()" required>
+      </div>
+  
+      <div class="col-md-3">
+        <label for="test" class="form-label">Test (5)</label>
+        <input type="number" class="form-control" id="test" min="0" max="5" oninput="calculateTotal()" required>
+      </div>
+  
+      <!-- Total -->
+      <div class="col-md-4">
+        <label for="total" class="form-label">Total CE Mark (out of 20)</label>
+        <input type="number" class="form-control" id="total" readonly>
+      </div>
+  
+      <!-- Submit Button -->
+      <div class="col-12 text-end">
+        <button type="submit" class="btn btn-primary mt-2">Save CE Mark</button>
+      </div>
+    </form>
+  </div>
+  
+  <script>
+    function calculateTotal() {
+      const assignment = parseFloat(document.getElementById('assignment').value) || 0;
+      const seminar = parseFloat(document.getElementById('seminar').value) || 0;
+      const attendance = parseFloat(document.getElementById('attendance').value) || 0;
+      const test = parseFloat(document.getElementById('test').value) || 0;
+      const total = assignment + seminar + attendance + test;
+  
+      document.getElementById('total').value = total;
+    }
+  </script>
+  

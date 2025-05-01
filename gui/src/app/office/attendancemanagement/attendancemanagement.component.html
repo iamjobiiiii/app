@@ -1,1 +1,72 @@
-<p>attendancemanagement works!</p>
+<div class="container mt-5">
+    <h2 class="mb-4">Attendance Management</h2>
+  
+    <!-- Form Controls -->
+    <form class="row g-3 mb-4">
+      <!-- Date Picker -->
+      <div class="col-md-3">
+        <label for="attendanceDate" class="form-label">Date</label>
+        <input type="date" class="form-control" id="attendanceDate" required />
+      </div>
+  
+      <!-- Hour Selector -->
+      <div class="col-md-3">
+        <label for="period" class="form-label">Select Hour</label>
+        <select class="form-select" id="period" required>
+          <option selected disabled value="">Choose...</option>
+          <option>Period 1</option>
+          <option>Period 2</option>
+          <option>Period 3</option>
+          <option>Period 4</option>
+          <option>Period 5</option>
+          <option>Period 6</option>
+        </select>
+      </div>
+  
+      <!-- Student ID Search -->
+      <div class="col-md-3">
+        <label for="studentId" class="form-label">Student ID</label>
+        <input type="text" class="form-control" id="studentId" placeholder="e.g. STU001" required />
+      </div>
+  
+      <!-- Attendance Status -->
+      <div class="col-md-3">
+        <label for="attendanceStatus" class="form-label">Attendance</label>
+        <select class="form-select" id="attendanceStatus" required>
+          <option selected disabled value="">Select...</option>
+          <option>Present</option>
+          <option>Absent</option>
+          <option>Late</option>
+        </select>
+      </div>
+  
+      <!-- Submit Button -->
+      <div class="col-12 text-end">
+        <button type="submit" class="btn btn-primary mt-2">Mark Attendance</button>
+      </div>
+    </form>
+  
+    <!-- Optional: Show Marked Entries -->
+    <div class="mt-4">
+      <h5>Marked Records (Example)</h5>
+      <table class="table table-bordered">
+        <thead class="table-secondary text-center">
+          <tr>
+            <th>Date</th>
+            <th>Hour</th>
+            <th>Student ID</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <tr>
+            <td>2025-05-01</td>
+            <td>Period 1</td>
+            <td>STU001</td>
+            <td><span class="badge bg-success">Present</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

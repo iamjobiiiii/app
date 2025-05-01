@@ -7,7 +7,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" [routerLink]="['/hod/profile']">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-user"></i>
                 </div>
@@ -20,28 +20,39 @@
             <hr class="sidebar-divider">
 <!-- Heading -->
             <div class="sidebar-heading">
-                Addons
+                Menu
             </div>
 <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" [routerLink]="['/hod/ce_management']">
                     <i class="fas fa-poll"></i>
-                    <span>CE Mark</span>
+                    <span>CE Mark Management</span>
                 </a>
                 
                 
             </li>
 <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" [routerLink]="['/hod/internal_mark_management']">
                     <i class="fas fa-poll"></i>
-                    <span>Internal Marks</span></a>
+                    <span>Internal Marks Management</span></a>
             </li>
  <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" [routerLink]="['/hod/attendence_management']">
                     <i class="fas fa-calendar-check"></i>
-                    <span>Attendance</span></a>
+                    <span>Attendance Management</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/hod/remove_student']">
+                    <i class="fas fa-poll"></i>
+                    <span>Student Management</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/hod/p&L_management']">
+                    <i class="fas fa-poll"></i>
+                    <span>Promotion</span></a>
             </li>
 <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -58,8 +69,8 @@
 <!-- Main Content -->
             <div id="content">
 
-                <router-outlet></router-outlet>
 
+             <router-outlet></router-outlet>
                
 <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
