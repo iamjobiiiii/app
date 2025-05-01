@@ -1,1 +1,71 @@
-<p>attendance works!</p>
+<div class="container mt-5">
+    <h2 class="mb-4">Student Attendance</h2>
+  
+    <div class="row mb-4 align-items-end">
+    <div class="col-md-4">
+      <label for="attendanceDate" class="form-label">Select Date:</label>
+      <input
+        type="date"
+        class="form-control"
+        id="attendanceDate"
+        value="2025-05-01"
+      />
+    </div>
+  
+    <div class="col-md-4 offset-md-4 text-end">
+      <button class="btn btn-primary">
+        Submit
+      </button>
+    </div>
+  </div>
+    <!-- Student Attendance Card -->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Jobin</h5>
+        <h6 class="card-subtitle mb-3 text-muted">Student ID: STU001</h6>
+  
+        <table class="table table-bordered">
+          <thead class="table-primary">
+            <tr>
+              <th>Subject</th>
+              <th>Time</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Multimedia</td>
+              <td>9:00 AM - 9:45 AM</td>
+              <td><span class="badge bg-success">Present</span></td>
+            </tr>
+            <tr>
+              <td>C++</td>
+              <td>9:50 AM - 10:35 AM</td>
+              <td><span class="badge bg-success">Present</span></td>
+            </tr>
+            <tr>
+              <td>Java</td>
+              <td>10:40 AM - 11:25 AM</td>
+              <td><span class="badge bg-success">Present</span></td>
+            </tr>
+            <tr>
+              <td>Python</td>
+              <td>11:30 AM - 12:15 PM</td>
+              <td><span class="badge bg-danger">Absent</span></td>
+            </tr>
+            <tr>
+              <td>Data stucture</td>
+              <td>1:00 PM - 1:45 PM</td>
+              <td><span class="badge bg-warning text-dark">Late</span></td>
+            </tr>
+            <tr>
+              <td>I O T</td>
+              <td>1:50 PM - 2:35 PM</td>
+              <td><span class="badge bg-success">Present</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
