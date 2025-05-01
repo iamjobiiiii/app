@@ -10,6 +10,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { CemarkComponent } from './students/cemark/cemark.component';
 import { InternalmarkComponent } from './students/internalmark/internalmark.component';
 import { AttendanceComponent } from './students/attendance/attendance.component';
+import { CemarkmanagementComponent } from './office/cemarkmanagement/cemarkmanagement.component';
+import { InernalmarkmanagemantComponent } from './office/inernalmarkmanagemant/inernalmarkmanagemant.component';
+import { AttendancemanagementComponent } from './office/attendancemanagement/attendancemanagement.component';
+import { TeacherComponent } from './teachers/teacher/teacher.component';
 
 
 
@@ -73,7 +77,31 @@ export const routes: Routes = [
     },
 
     {
-        path: 'teacher', component:StudentComponent
+        path: 'teacher', component:TeacherComponent,
+
+        children: [
+            {
+                path: '', redirectTo: 'profile', pathMatch: 'full',
+            },
+
+            {
+                path: 'profile', component:ProfileComponent
+            },
+
+            {
+                path: 'ce_management', component:CemarkmanagementComponent
+            },
+
+            {
+                path: 'internal_mark_management', component:InernalmarkmanagemantComponent
+            },
+
+            {
+                path: 'attendance_management', component:AttendancemanagementComponent
+            },
+
+             
+        ]
     },
 
    

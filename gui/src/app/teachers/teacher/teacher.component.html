@@ -7,7 +7,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" [routerLink]="['/teacher/profile']">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-user"></i>
                 </div>
@@ -20,28 +20,28 @@
             <hr class="sidebar-divider">
 <!-- Heading -->
             <div class="sidebar-heading">
-                Addons
+                Menu
             </div>
 <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" [routerLink]="['/teacher/ce_management']">
                     <i class="fas fa-poll"></i>
-                    <span>CE Mark</span>
+                    <span>CE Mark Management</span>
                 </a>
                 
                 
             </li>
 <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" [routerLink]="['/teacher/internal_mark_management']">
                     <i class="fas fa-poll"></i>
-                    <span>Internal Marks</span></a>
+                    <span>Internal Marks Management</span></a>
             </li>
  <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" [routerLink]="['/teacher/attendance_management']">
                     <i class="fas fa-calendar-check"></i>
-                    <span>Attendance</span></a>
+                    <span>Attendance Management</span></a>
             </li>
 <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
