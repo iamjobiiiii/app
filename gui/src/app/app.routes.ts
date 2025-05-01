@@ -6,6 +6,11 @@ import { HodComponent } from './hod/hod/hod.component';
 import { ParentComponent } from './parents/parent/parent.component';
 import { StudentComponent } from './students/student/student.component';
 import { LoginComponent } from './publicauth/login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { CemarkComponent } from './students/cemark/cemark.component';
+import { InternalmarkComponent } from './students/internalmark/internalmark.component';
+import { AttendanceComponent } from './students/attendance/attendance.component';
+
 
 
 
@@ -23,7 +28,8 @@ export const routes: Routes = [
     } ,
 
     { 
-        path: 'dashboard', component: SectionHeroComponent
+        path: 'dashboard', component: SectionHeroComponent,
+
     },
     
     {
@@ -35,7 +41,8 @@ export const routes: Routes = [
     },
 
     {
-        path: 'hod', component:HodComponent
+        path: 'hod', component:HodComponent,
+
     },
     
     {
@@ -43,10 +50,31 @@ export const routes: Routes = [
     },
 
     {
-        path: 'students', component:StudentComponent
+        path: 'students', component:StudentComponent,
+         children: [
+             {
+                path: '', redirectTo: 'profile', pathMatch: 'full',
+             },
+             {
+                path: 'cemark', component: CemarkComponent    
+            },
+            {
+                path: 'internal', component: InternalmarkComponent
+            },
+            {
+                path: 'attendence', component: AttendanceComponent
+                
+            },
+            {
+                path: 'profile', component:ProfileComponent
+            }
+            
+         ]
     },
 
     {
         path: 'teacher', component:StudentComponent
-    }
+    },
+
+   
 ];
