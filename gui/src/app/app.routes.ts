@@ -22,6 +22,8 @@ import { RegistrationComponent } from './publicauth/registration/registration.co
 import { ParentcreationComponent } from './office/parentcreation/parentcreation.component';
 import { UsermanagmentComponent } from './office/usermanagment/usermanagment.component';
 import { PromotionComponent } from './office/promotion/promotion.component';
+import { authGuard } from './guard/auth.guard';
+
 
 
 
@@ -35,59 +37,41 @@ export const routes: Routes = [
 
     },
 
-    { 
-              path: 'appaboutcollege', component: AboutcollegeComponent
-    } ,
+    {path: 'appaboutcollege', component: AboutcollegeComponent},
 
-    { 
-        path: 'dashboard', component: SectionHeroComponent,
+    {path: 'dashboard', component: SectionHeroComponent},
+    
+    {path: 'signin', component: LoginComponent,},
 
-    },
+    { path: 'parents', component:ParentComponent, canActivate:[authGuard],},
+
     
     {
-        path: 'signin', component: LoginComponent
-    },
-    
-    {
-        path: 'admin', component:AdminComponent,
+        path: 'admin', component:AdminComponent, canActivateChild:[authGuard],
 
         children: [
             { path: '', redirectTo: 'eventmanagement', pathMatch: 'full',},
-            { path: 'eventmanagement', component: EventcreationComponent, },
-            { path: 'registration', component: RegistrationComponent, },
-            { path: 'parentsmanagement', component: ParentcreationComponent, },
-            { path: 'usermanagement', component: UsermanagmentComponent },
-            {path: 'profile', component:ProfileComponent},
-            {path: 'promotion', component:PromotionComponent},
+            { path: 'eventmanagement', component: EventcreationComponent,},
+            { path: 'registration', component: RegistrationComponent,},
+            { path: 'parentsmanagement', component: ParentcreationComponent,},
+            { path: 'usermanagement', component: UsermanagmentComponent,},
+            {path: 'profile', component:ProfileComponent,},
+            {path: 'promotion', component:PromotionComponent,},
            
         ]
     },
 
     {
-        path: 'hod', component:HodComponent,
+        path: 'hod', component:HodComponent, canActivate:[authGuard],
 
         children: [
-            {
-                path: '', redirectTo: 'profile', pathMatch: 'full',
-            },
-            {
-                path: 'profile', component:ProfileComponent
-            },
-            {
-                path: 'ce_management', component:CemarkmanagementComponent
-            },
-            {
-                path: 'internal_mark_management', component:InernalmarkmanagemantComponent
-            },
-            {
-                path: 'attendence_management', component:AttendancemanagementComponent
-            },
-            {
-                path: 'remove_student', component:RemovestudentComponent
-            },
-            {
-                path: 'p&L_management', component:PLPromotionComponent
-            },
+            {path: '', redirectTo: 'profile', pathMatch: 'full',},
+            { path: 'profile', component:ProfileComponent,},
+            {path: 'ce_management', component:CemarkmanagementComponent,},
+            {path: 'internal_mark_management', component:InernalmarkmanagemantComponent,},
+            {path: 'attendence_management', component:AttendancemanagementComponent,},
+            {path: 'remove_student', component:RemovestudentComponent,},
+            {path: 'p&L_management', component:PLPromotionComponent,},
 
 
         ]
@@ -95,83 +79,41 @@ export const routes: Routes = [
 
     },
     
-    {
-        path: 'parents', component:ParentComponent
-    },
 
     {
-        path: 'students', component:StudentComponent,
+        path: 'students', component:StudentComponent, canActivate:[authGuard],
          children: [
-             {
-                path: '', redirectTo: 'profile', pathMatch: 'full',
-             },
-             {
-                path: 'cemark', component: CemarkComponent    
-            },
-            {
-                path: 'internal', component: InternalmarkComponent
-            },
-            {
-                path: 'attendence', component: AttendanceComponent
-                
-            },
-            {
-                path: 'profile', component:ProfileComponent
-            }
+             {path: '', redirectTo: 'profile', pathMatch: 'full',},
+             {path: 'cemark', component: CemarkComponent,},
+             { path: 'internal', component: InternalmarkComponent,},
+             {path: 'attendence', component: AttendanceComponent,},
+             {path: 'profile', component:ProfileComponent,}
             
          ]
     },
 
     {
-        path: 'teacher', component:TeacherComponent,
+        path: 'teacher', component:TeacherComponent,canActivate:[authGuard],
 
         children: [
-            {
-                path: '', redirectTo: 'profile', pathMatch: 'full',
-            },
-
-            {
-                path: 'profile', component:ProfileComponent
-            },
-
-            {
-                path: 'ce_management', component:CemarkmanagementComponent
-            },
-
-            {
-                path: 'internal_mark_management', component:InernalmarkmanagemantComponent
-            },
-
-            {
-                path: 'attendance_management', component:AttendancemanagementComponent
-            },
+            {path: '', redirectTo: 'profile', pathMatch: 'full',},
+            {path: 'profile', component:ProfileComponent,},
+            {path: 'ce_management', component:CemarkmanagementComponent,},
+            {path: 'internal_mark_management', component:InernalmarkmanagemantComponent,},
+            {path: 'attendance_management', component:AttendancemanagementComponent,},
 
              
         ]
     },
 
-    { path: 'classincharge', component: ClassinchargeComponent, 
+    { path: 'classincharge', component: ClassinchargeComponent, canActivate:[authGuard],
 
         children: [
-            {
-                path: '', redirectTo: 'profile', pathMatch: 'full',
-            },
-
-            {
-                path: 'profile', component:ProfileComponent
-            },
-
-            {
-                path: 'ce_management', component:CemarkmanagementComponent
-            },
-
-            {
-                path: 'internal_mark_management', component:InernalmarkmanagemantComponent
-            },
-
-            {
-                path: 'attendance_management', component:AttendancemanagementComponent
-            },
+            {path: '', redirectTo: 'profile', pathMatch: 'full',},
+            {path: 'profile', component:ProfileComponent,},
+            {path: 'ce_management', component:CemarkmanagementComponent,},
+            {path: 'internal_mark_management', component:InernalmarkmanagemantComponent,},
+            {path: 'attendance_management', component:AttendancemanagementComponent,},
 
              
         ]

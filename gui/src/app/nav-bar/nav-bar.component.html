@@ -85,9 +85,12 @@
    
       <!-- Action -->
       <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
-        <a [routerLink]="'signin'" class="btn btn-sm btn-primary w-full w-lg-auto">
-          Sign in
+        <a *ngIf="!isLoggedIn" [routerLink]="'/signin'" class="btn btn-sm btn-primary w-full w-lg-auto">
+          Sign In
         </a>
+        <!-- Show Log Out Button if logged in -->
+        <a *ngIf="isLoggedIn" (click)="logout()" class="btn btn-sm btn-danger w-full w-lg-auto">
+          Log Out </a>
       </div>
     </div>
   </div>
