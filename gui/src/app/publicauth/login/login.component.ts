@@ -30,6 +30,8 @@ export class LoginComponent {
         if (response && response.access_token) {
           // Save the token
           this.authService.saveToken(response.access_token);
+          this.authService.saveSession(response.access_token, response.role);
+          
 
           // Decode the JWT token to extract the role
           try {

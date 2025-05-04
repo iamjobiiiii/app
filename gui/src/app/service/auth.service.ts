@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 
 
 const TOKEN_KEY = "user_session";
-
+const USER_KEY = 'user';
 @Injectable({
   providedIn: 'root'
 })
@@ -23,7 +23,20 @@ export class AuthService {
       { headers }
     );
   }
-  public saveToken(token: string) {
+
+
+  saveSession(token: string, role: string,isAuthenticated: boolean = true) {
+    localStorage.setItem(TOKEN_KEY, token);
+    localStorage.setItem(USER_KEY, JSON.stringify({ role, isAuthenticated: true }));
+  }
+  
+  getUser(): { role: string, isAuthenticated: boolean } | null {
+    const data = localStorage.getItem(USER_KEY);
+    return data ? JSON.parse(data) : null;
+  }
+
+
+  public saveToken(token: string,) {
     localStorage.setItem(TOKEN_KEY, token);
   }
   public getToken() {
@@ -35,9 +48,12 @@ export class AuthService {
   public clear() {
     localStorage.clear();
   }
-  public get isLoggedIn(): boolean {
-    return !!this.getToken();
+  logout(): void {
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(USER_KEY);
+    this.router.navigate(['/signin']);
   }
+
   registerUser(userid: string, username: string, password: string, role: string, address: string): Observable<any> {
     const payload = { userid, username, password, role, address };
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -57,17 +73,7 @@ export class AuthService {
     return throwError(() => new Error(errorMessage));
   }
 
-  logout(): void {
-    // Clear authentication token from localStorage
-    localStorage.removeItem(TOKEN_KEY);
-
-    // Optionally, clear any other user data from localStorage if required
-    localStorage.removeItem('user'); // Remove user data if stored
-
-    // Redirect to login page
-    this.router.navigate(['/signin']);
-  }
-
+  
   // Check if the user is authenticated by verifying the token
   isAuthenticated(): boolean {
     return !!this.getToken(); // Checks if token exists

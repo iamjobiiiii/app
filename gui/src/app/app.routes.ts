@@ -43,11 +43,11 @@ export const routes: Routes = [
     
     {path: 'signin', component: LoginComponent,},
 
-    { path: 'parents', component:ParentComponent, canActivate:[authGuard],},
+    { path: 'parents', component:ParentComponent, canActivate:[authGuard],data: { role: 'parents' }},
 
     
     {
-        path: 'admin', component:AdminComponent, canActivateChild:[authGuard],
+        path: 'admin', component:AdminComponent, canActivateChild:[authGuard],data: { role: 'admin' },
 
         children: [
             { path: '', redirectTo: 'eventmanagement', pathMatch: 'full',},
@@ -62,7 +62,7 @@ export const routes: Routes = [
     },
 
     {
-        path: 'hod', component:HodComponent, canActivate:[authGuard],
+        path: 'hod', component:HodComponent, canActivate:[authGuard],data: { role: 'hod' },
 
         children: [
             {path: '', redirectTo: 'profile', pathMatch: 'full',},
@@ -81,7 +81,7 @@ export const routes: Routes = [
     
 
     {
-        path: 'students', component:StudentComponent, canActivate:[authGuard],
+        path: 'students', component:StudentComponent, canActivate:[authGuard,],data: { role: 'students' },
          children: [
              {path: '', redirectTo: 'profile', pathMatch: 'full',},
              {path: 'cemark', component: CemarkComponent,},
@@ -93,7 +93,7 @@ export const routes: Routes = [
     },
 
     {
-        path: 'teacher', component:TeacherComponent,canActivate:[authGuard],
+        path: 'teacher', component:TeacherComponent,canActivate:[authGuard],data: { role: 'teacher' },
 
         children: [
             {path: '', redirectTo: 'profile', pathMatch: 'full',},
@@ -106,7 +106,7 @@ export const routes: Routes = [
         ]
     },
 
-    { path: 'classincharge', component: ClassinchargeComponent, canActivate:[authGuard],
+    { path: 'classincharge', component: ClassinchargeComponent, canActivate:[authGuard],data: { role: 'classincharge' },
 
         children: [
             {path: '', redirectTo: 'profile', pathMatch: 'full',},
