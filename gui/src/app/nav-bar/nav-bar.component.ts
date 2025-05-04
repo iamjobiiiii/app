@@ -18,12 +18,13 @@ export class NavBarComponent implements OnInit {
 
     constructor(private authService: AuthService) {}
   
-    ngOnInit(): void {
-      this.isLoggedIn = !!this.authService.getToken();  // Check if the token exists
+    ngOnInit() {
+      this.authService.isLoggedIn$.subscribe(status => {
+        this.isLoggedIn = status;
+      });
     }
   
-    logout(): void {
+    logout() {
       this.authService.logout();
-      this.isLoggedIn = false;  // Update the flag after logging out
     }
 }

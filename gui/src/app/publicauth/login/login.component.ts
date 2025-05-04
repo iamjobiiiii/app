@@ -40,6 +40,8 @@ export class LoginComponent {
             console.log('User role:', role);
 
             if (role) {
+
+              this.authService.saveSession(response.access_token, role, true);
               // Navigate based on role
               switch (role) {
                 case 'admin':

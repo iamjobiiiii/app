@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import { catchError, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 
 
@@ -11,6 +11,9 @@ const USER_KEY = 'user';
   providedIn: 'root'
 })
 export class AuthService {
+
+  private isLoggedInSubject = new BehaviorSubject<boolean>(Boolean(this.isAuthenticated()));
+  public isLoggedIn$ = this.isLoggedInSubject.asObservable();
   
 
   constructor(private httpClient: HttpClient, private router: Router) { }
@@ -28,6 +31,7 @@ export class AuthService {
   saveSession(token: string, role: string,isAuthenticated: boolean = true) {
     localStorage.setItem(TOKEN_KEY, token);
     localStorage.setItem(USER_KEY, JSON.stringify({ role, isAuthenticated: true }));
+    this.updateLoginStatus(true);
   }
   
   getUser(): { role: string, isAuthenticated: boolean } | null {
@@ -51,6 +55,7 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(USER_KEY);
+    this.updateLoginStatus(false);
     this.router.navigate(['/signin']);
   }
 
@@ -72,12 +77,17 @@ export class AuthService {
     }
     return throwError(() => new Error(errorMessage));
   }
-
+  
   
   // Check if the user is authenticated by verifying the token
-  isAuthenticated(): boolean {
+  isAuthenticated(): Boolean {
     return !!this.getToken(); // Checks if token exists
   }
 
 
+  // Call this on login
+  updateLoginStatus(status: boolean) {
+    this.isLoggedInSubject.next(status);
+  }
+  
 }
